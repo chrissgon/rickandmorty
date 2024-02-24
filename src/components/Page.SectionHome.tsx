@@ -14,7 +14,7 @@ import {
 } from "../store";
 import AtomFavoriteButton from "./Atom.FavoriteButton";
 
-export default function OrganismSectionHome() {
+export default function PageSectionHome() {
   const dispatch = useAppDispatch();
   const pageCharacter = useAppSelector((state) => state.character.page);
   const pageEpisode = useAppSelector((state) => state.episode.page);
