@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export interface IEpisode {
-  id: string;
+  id: number;
   name: string;
   episode: string;
   characters: string[];
@@ -25,6 +25,15 @@ export const getEpisodes = createAsyncThunk(
   async (page: number) => {
     return (
       await fetch(`https://rickandmortyapi.com/api/episode?page=${page}`)
+    ).json();
+  }
+);
+
+export const filterEpisodes = createAsyncThunk(
+  "episode/filterEpisodes",
+  async ({ name }: { name: string }) => {
+    return (
+      await fetch(`https://rickandmortyapi.com/api/episode?name=${name}`)
     ).json();
   }
 );

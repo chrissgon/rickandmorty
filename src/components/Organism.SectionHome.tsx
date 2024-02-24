@@ -12,6 +12,7 @@ import {
   useAppDispatch,
   useAppSelector,
 } from "../store";
+import AtomFavoriteButton from "./Atom.FavoriteButton";
 
 export default function OrganismSectionHome() {
   const dispatch = useAppDispatch();
@@ -21,7 +22,7 @@ export default function OrganismSectionHome() {
   useEffect(() => {
     dispatch(getCharacters(pageCharacter));
     dispatch(getEpisodes(pageEpisode));
-  }, []);
+  }, [dispatch, pageCharacter, pageEpisode]);
 
   return (
     <section className="flex flex-wrap gap-10">
@@ -29,6 +30,8 @@ export default function OrganismSectionHome() {
         <img src={logo} alt="Logo" className="w-36" />
 
         <div className="flex items-center gap-5">
+          <AtomFavoriteButton className="max-md:hidden" />
+          <hr className="max-md:!hidden vertical !h-[30px]" />
           <AtomDarkMode />
           <AtomGithubLink />
           <AtomFigmaLink />
@@ -36,8 +39,7 @@ export default function OrganismSectionHome() {
       </header>
       <article className="w-full md:w-1/2 flex flex-col justify-center gap-8 my-12">
         <h1 className="text-4xl font-bold">
-          All in one <span className="text-4xl text-theme "> fuck#$%</span>{" "}
-          place
+          All in one <span className="text-4xl text-theme"> fuck#$%</span> place
         </h1>
 
         <p className="text-base text-secondary">

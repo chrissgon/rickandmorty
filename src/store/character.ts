@@ -6,7 +6,7 @@ export interface ILocation {
 }
 
 export interface ICharacter {
-  id: string;
+  id: number;
   name: string;
   species: string;
   type: string;
