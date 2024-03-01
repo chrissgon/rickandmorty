@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-export interface ILocation {
+export interface ICharacterLocation {
   name: string;
   url: string;
 }
@@ -15,7 +15,7 @@ export interface ICharacter {
   image: string;
   url: string;
   episode: string[];
-  location: ILocation;
+  location: ICharacterLocation;
 }
 
 export interface ICharacters extends Array<ICharacter> {}

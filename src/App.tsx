@@ -1,10 +1,31 @@
+import { useEffect } from "react";
+
+import {
+  getCharacters,
+  getEpisodes,
+  getLocations,
+  useAppDispatch,
+  useAppSelector,
+} from "./store";
+
 import AtomFavoriteButton from "./components/Atom.FavoriteButton";
-import OrganismCharacterList from "./components/Organism.CharacterList";
+import PageCharacterList from "./components/Page.CharacterList";
+import PageEpisodeList from "./components/Page.EpisodeList";
 import PageSectionHome from "./components/Page.SectionHome";
-import { useAppSelector } from "./store";
+import PageLocationList from "./components/Page.LocationList";
+import AtomFooter from "./components/Atom.Footer";
 
 export default function App() {
-  const characters = useAppSelector((state) => state.character.characters);
+  const dispatch = useAppDispatch();
+  const pageCharacter = useAppSelector((state) => state.character.page);
+  const pageEpisode = useAppSelector((state) => state.episode.page);
+  const pageLocation = useAppSelector((state) => state.location.page);
+
+  useEffect(() => {
+    dispatch(getCharacters(pageCharacter));
+    dispatch(getEpisodes(pageEpisode));
+    dispatch(getLocations(pageLocation));
+  }, [dispatch, pageCharacter, pageEpisode, pageLocation]);
 
   return (
     <div className="p-10 xl:p-20 flex flex-col gap-10">
@@ -12,15 +33,13 @@ export default function App() {
 
       <AtomFavoriteButton className="md:hidden fixed bottom-10 right-10" />
 
-      <section className="relative">
-        <header className="flex justify-between items-center">
-          <h2 className="text-xl font-bold">Characters</h2>
-          <button className="btn btn-white">
-            See all <i className="bi-chevron-right"></i>
-          </button>
-        </header>
-        <OrganismCharacterList characters={characters} />
-      </section>
+      <PageCharacterList />
+
+      <PageEpisodeList />
+
+      <PageLocationList />
+
+      <AtomFooter />
     </div>
   );
 }

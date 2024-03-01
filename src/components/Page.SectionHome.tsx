@@ -1,29 +1,13 @@
-import { useEffect } from "react";
-
 import AtomFigmaLink from "./Atom.FigmaLink";
 import AtomGithubLink from "./Atom.GithubLink";
 import AtomDarkMode from "./Atom.DarkMode";
 
 import logo from "/logo.svg";
 import MoleculeFilterSearch from "./Molecule.FilterSearch";
-import {
-  getCharacters,
-  getEpisodes,
-  useAppDispatch,
-  useAppSelector,
-} from "../store";
+
 import AtomFavoriteButton from "./Atom.FavoriteButton";
 
 export default function PageSectionHome() {
-  const dispatch = useAppDispatch();
-  const pageCharacter = useAppSelector((state) => state.character.page);
-  const pageEpisode = useAppSelector((state) => state.episode.page);
-
-  useEffect(() => {
-    dispatch(getCharacters(pageCharacter));
-    dispatch(getEpisodes(pageEpisode));
-  }, [dispatch, pageCharacter, pageEpisode]);
-
   return (
     <section className="flex flex-wrap gap-10">
       <header className="w-full flex justify-between items-center z-10">

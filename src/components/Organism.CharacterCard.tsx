@@ -10,8 +10,10 @@ export default function OrganismCharacterCard(props: ICharacter) {
         </div>
 
         {/* header */}
-        <header className="flex justify-between items-center">
-          <h4 className="font-bold text-md">{props.name}</h4>
+        <header className="flex gap-2 justify-between items-center">
+          <h4 className="font-bold text-md whitespace-nowrap text-ellipsis overflow-hidden">
+            {props.name}
+          </h4>
           <i className="bi-heart text-error text-xl cursor-pointer"></i>
         </header>
 
