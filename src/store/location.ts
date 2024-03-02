@@ -14,11 +14,13 @@ export interface ILocations extends Array<ILocation> {}
 interface IState {
   locations: ILocations;
   page: number;
+  notFound: boolean;
 }
 
 const initialState = {
   locations: [],
   page: 1,
+  notFound: false,
 } as IState;
 
 export const getLocations = createAsyncThunk(
@@ -52,7 +54,17 @@ export const locationSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(getLocations.fulfilled, (state: IState, action) => {
+      state.notFound = false;
       state.locations = action.payload.results;
+    });
+    builder.addCase(filterLocations.fulfilled, (state: IState, action) => {
+      if (action.payload.error) {
+        state.notFound = true;
+        return;
+      }
+      state.notFound = false;
+      state.locations = action.payload.results;
+      window.location.href = "#locations";
     });
   },
 });

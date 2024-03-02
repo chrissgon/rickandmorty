@@ -11,7 +11,7 @@ export default function AtomFooter() {
           className="logo"
         />
         <p className="text-secondary">
-          © {new Date().getFullYear()} Rick and Morty
+          © {new Date().getFullYear()} - Rick and Morty
         </p>
       </footer>
     </>

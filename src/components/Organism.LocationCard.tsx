@@ -7,7 +7,7 @@ export default function OrganismLocationCard(props: ILocation) {
       <article className="w-full card-content">
         {/* header */}
         <header className="flex gap-4 justify-between items-center">
-          <AtomIconPlanet />
+          <AtomIconPlanet className="w-6" />
           <h4 className="flex-1">
             <p className="max-w-[130px] font-bold whitespace-nowrap overflow-hidden text-ellipsis">
               {props.name}

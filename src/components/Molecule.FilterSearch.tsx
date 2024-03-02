@@ -1,12 +1,14 @@
-import { useState, type ChangeEvent } from "react";
+import { useState, type ChangeEvent, useEffect } from "react";
 import {
   filterCharacters,
   filterEpisodes,
+  filterLocations,
   getCharacters,
   getEpisodes,
+  getLocations,
   useAppDispatch,
+  useAppSelector,
 } from "../store";
-import { filterLocations, getLocations } from "../store/location";
 
 enum ETypes {
   Character = "Character",
@@ -19,6 +21,14 @@ export default function MoleculeFilterSearch() {
   const [input, setInput] = useState<string>("");
 
   const dispatch = useAppDispatch();
+  const notFound = useAppSelector(
+    (state) =>
+      state.character.notFound ||
+      state.episode.notFound ||
+      state.location.notFound
+  );
+
+  useEffect(() => {}, [notFound]);
 
   const actionsByType = {
     [ETypes.Character]: () => {
@@ -50,7 +60,13 @@ export default function MoleculeFilterSearch() {
 
   return (
     <div className="w-full flex flex-col gap-3 md:max-w-[500px]">
-      <label className="group group-row">
+      <label
+        className={`field-group group group-row ${
+          !notFound || "field-group-error"
+        }`}
+        // @ts-expect-error Custom props
+        message={!notFound || "No results found"}
+      >
         <select onChange={changeType} className="input group-item max-w-fit">
           <MoleculeFilterSearch.OptionsTypes />
         </select>

@@ -9,7 +9,7 @@ import AtomFavoriteButton from "./Atom.FavoriteButton";
 
 export default function PageSectionHome() {
   return (
-    <section className="flex flex-wrap gap-10">
+    <section id="home" className="flex flex-wrap gap-10">
       <header className="w-full flex justify-between items-center z-10">
         <img src={logo} alt="Logo" className="w-36" />
 

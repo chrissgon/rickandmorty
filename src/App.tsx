@@ -28,7 +28,7 @@ export default function App() {
   }, [dispatch, pageCharacter, pageEpisode, pageLocation]);
 
   return (
-    <div className="p-10 xl:p-20 flex flex-col gap-10">
+    <div className="p-10 xl:p-20 xl:pb-5 flex flex-col gap-10">
       <PageSectionHome />
 
       <AtomFavoriteButton className="md:hidden fixed bottom-10 right-10" />

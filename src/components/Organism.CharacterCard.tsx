@@ -1,4 +1,5 @@
 import { ICharacter } from "../store";
+import AtomIconPlanet from "./Atom.IconPlanet";
 
 export default function OrganismCharacterCard(props: ICharacter) {
   return (
@@ -28,7 +29,7 @@ export default function OrganismCharacterCard(props: ICharacter) {
             {props.species}
           </p>
           <p className="w-full text-ellipsis overflow-hidden whitespace-nowrap">
-            <i className="bi-globe-americas mr-2"></i>
+            <AtomIconPlanet className="w-4 inline h-fit mr-2" />
             {props.location.name}
           </p>
         </article>

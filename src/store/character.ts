@@ -23,11 +23,13 @@ export interface ICharacters extends Array<ICharacter> {}
 interface IState {
   characters: ICharacters;
   page: number;
+  notFound: boolean;
 }
 
 const initialState = {
   characters: [],
   page: 1,
+  notFound: false,
 } as IState;
 
 export const getCharacters = createAsyncThunk(
@@ -61,10 +63,17 @@ export const characterSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(getCharacters.fulfilled, (state: IState, action) => {
+      state.notFound = false;
       state.characters = action.payload.results;
     });
     builder.addCase(filterCharacters.fulfilled, (state: IState, action) => {
+      if (action.payload.error) {
+        state.notFound = true;
+        return;
+      }
+      state.notFound = false;
       state.characters = action.payload.results;
+      window.location.href = "#characters";
     });
   },
 });
