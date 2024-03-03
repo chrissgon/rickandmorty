@@ -1,7 +1,7 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
 export interface IEpisode {
-  id: number;
+  id: string;
   name: string;
   episode: string;
   characters: string[];
@@ -13,12 +13,14 @@ export interface IEpisodes extends Array<IEpisode> {}
 interface IState {
   episodes: IEpisodes;
   page: number;
+  pages: number;
   notFound: boolean;
 }
 
 const initialState = {
   episodes: [],
   page: 1,
+  pages: 100,
   notFound: false,
 } as IState;
 
@@ -45,17 +47,15 @@ export const episodeSlice = createSlice({
   name: "episode",
   initialState,
   reducers: {
-    nextEpisode(state: IState) {
-      state.page = state.page + 1;
-    },
-    prevEpisode: (state: IState) => {
-      state.page = state.page - 1;
+    setEpisodePage(state: IState, action: PayloadAction<{ page: number }>) {
+      state.page = action.payload.page;
     },
   },
   extraReducers: (builder) => {
     builder.addCase(getEpisodes.fulfilled, (state: IState, action) => {
       state.notFound = false;
       state.episodes = action.payload.results;
+      state.pages = action.payload.info.pages;
     });
     builder.addCase(filterEpisodes.fulfilled, (state: IState, action) => {
       if (action.payload.error) {
@@ -69,6 +69,6 @@ export const episodeSlice = createSlice({
   },
 });
 
-export const { nextEpisode, prevEpisode } = episodeSlice.actions;
+export const { setEpisodePage } = episodeSlice.actions;
 
 export default episodeSlice.reducer;

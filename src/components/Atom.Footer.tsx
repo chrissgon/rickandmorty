@@ -5,7 +5,7 @@ export default function AtomFooter() {
       <footer className="flex flex-col items-center gap-2 text-center pb-10">
         <img
           src="/logo.svg"
-          alt="Perfect UI Logo"
+          alt="Rick and Morty Logo"
           width="90"
           height="16"
           className="logo"

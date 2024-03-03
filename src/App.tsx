@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
 import {
   getCharacters,
   getEpisodes,
@@ -8,12 +10,14 @@ import {
   useAppSelector,
 } from "./store";
 
-import AtomFavoriteButton from "./components/Atom.FavoriteButton";
-import PageCharacterList from "./components/Page.CharacterList";
-import PageEpisodeList from "./components/Page.EpisodeList";
-import PageSectionHome from "./components/Page.SectionHome";
-import PageLocationList from "./components/Page.LocationList";
 import AtomFooter from "./components/Atom.Footer";
+import IndexPage from "./pages";
+import CharactersPage from "./pages/characters";
+import CharacterPage from "./pages/character";
+import EpisodesPage from "./pages/episodes";
+import EpisodePage from "./pages/episode";
+import LocationsPage from "./pages/locations";
+import LocationPage from "./pages/location";
 
 export default function App() {
   const dispatch = useAppDispatch();
@@ -28,18 +32,20 @@ export default function App() {
   }, [dispatch, pageCharacter, pageEpisode, pageLocation]);
 
   return (
-    <div className="p-10 xl:p-20 xl:pb-5 flex flex-col gap-10">
-      <PageSectionHome />
+    <Router>
+      <div className="p-10 xl:p-20 xl:pb-5 flex flex-col gap-10">
+        <Routes>
+          <Route path="/" element={<IndexPage />} />
+          <Route path="/characters" element={<CharactersPage />} />
+          <Route path="/character/:id" element={<CharacterPage />} />
+          <Route path="/episodes" element={<EpisodesPage />} />
+          <Route path="/episode/:id" element={<EpisodePage />} />
+          <Route path="/locations" element={<LocationsPage />} />
+          <Route path="/location/:id" element={<LocationPage />} />
+        </Routes>
 
-      <AtomFavoriteButton className="md:hidden fixed bottom-10 right-10" />
-
-      <PageCharacterList />
-
-      <PageEpisodeList />
-
-      <PageLocationList />
-
-      <AtomFooter />
-    </div>
+        <AtomFooter />
+      </div>
+    </Router>
   );
 }

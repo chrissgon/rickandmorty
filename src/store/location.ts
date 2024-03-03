@@ -1,7 +1,7 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
 export interface ILocation {
-  id: number;
+  id: string;
   name: string;
   type: string;
   dimension: string;
@@ -45,11 +45,8 @@ export const locationSlice = createSlice({
   name: "location",
   initialState,
   reducers: {
-    nextLocation(state: IState) {
-      state.page = state.page + 1;
-    },
-    prevLocation: (state: IState) => {
-      state.page = state.page - 1;
+    setLocationPage(state: IState, action: PayloadAction<{ page: number }>) {
+      state.page = action.payload.page;
     },
   },
   extraReducers: (builder) => {
@@ -69,6 +66,6 @@ export const locationSlice = createSlice({
   },
 });
 
-export const { nextLocation, prevLocation } = locationSlice.actions;
+export const { setLocationPage } = locationSlice.actions;
 
 export default locationSlice.reducer;

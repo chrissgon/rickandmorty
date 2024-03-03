@@ -1,9 +1,10 @@
+import { Link } from "react-router-dom";
 import { ILocation } from "../store";
 import AtomIconPlanet from "./Atom.IconPlanet";
 
 export default function OrganismLocationCard(props: ILocation) {
   return (
-    <div className="relative flex flex-col items-center !overflow-visible card  w-full h-fit max-w-[250px] min-w-[250px]">
+    <div className="relative snap-center sm:snap-start flex flex-col items-center !overflow-visible card  w-full h-fit max-w-[250px] min-w-[250px]">
       <article className="w-full card-content">
         {/* header */}
         <header className="flex gap-4 justify-between items-center">
@@ -16,9 +17,13 @@ export default function OrganismLocationCard(props: ILocation) {
           </h4>
           <i className="bi-heart text-error text-xl cursor-pointer"></i>
         </header>
-
-        {/* button */}
-        <button className="btn btn-white w-full mt-2">View details</button>
+        
+        <Link
+          to={`/location/${props.id}`}
+          className="btn btn-white w-full block mt-2 text-center"
+        >
+          View details
+        </Link>
       </article>
     </div>
   );

@@ -1,7 +1,8 @@
 import OrganismCharacterCard from "./Organism.CharacterCard";
 import { useAppSelector } from "../store";
+import { Link } from "react-router-dom";
 
-export default function PageCharacterList() {
+export default function OrganismCharacterCarousel() {
   const characters = useAppSelector((state) => state.character.characters);
   return (
     <section id="characters" className="relative">
@@ -10,15 +11,19 @@ export default function PageCharacterList() {
           <i className="bi-search text-base mr-2"></i>
           Characters
         </a>
-        <button className="btn btn-white">
+        <Link to="/characters" className="btn btn-white">
           See all <i className="bi-chevron-right"></i>
-        </button>
+        </Link>
       </header>
-      <article className="overflow-x-auto max-w-screen">
+      <article className="overflow-x-auto snap-x snap-mandatory">
         <div className="flex gap-5 w-auto py-5">
           {characters.map((character) => {
             return (
-              <OrganismCharacterCard key={character.name} {...character} />
+              <OrganismCharacterCard
+                key={character.id}
+                className="snap-center sm:snap-start w-full max-w-[250px] min-w-[250px]"
+                character={character}
+              />
             );
           })}
         </div>

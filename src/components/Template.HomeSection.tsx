@@ -4,14 +4,13 @@ import AtomDarkMode from "./Atom.DarkMode";
 
 import logo from "/logo.svg";
 import MoleculeFilterSearch from "./Molecule.FilterSearch";
-
 import AtomFavoriteButton from "./Atom.FavoriteButton";
 
-export default function PageSectionHome() {
+export default function TemplateHomeSection() {
   return (
     <section id="home" className="flex flex-wrap gap-10">
       <header className="w-full flex justify-between items-center z-10">
-        <img src={logo} alt="Logo" className="w-36" />
+        <img loading="lazy" src={logo} alt="Rick and Morty Logo" className="w-36" />
 
         <div className="flex items-center gap-5">
           <AtomFavoriteButton className="max-md:hidden" />

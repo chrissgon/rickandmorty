@@ -1,4 +1,8 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import {
+  createAsyncThunk,
+  createSlice,
+  type PayloadAction,
+} from "@reduxjs/toolkit";
 
 export interface ICharacterLocation {
   name: string;
@@ -6,7 +10,7 @@ export interface ICharacterLocation {
 }
 
 export interface ICharacter {
-  id: number;
+  id: string;
   name: string;
   species: string;
   status: string;
@@ -23,12 +27,15 @@ export interface ICharacters extends Array<ICharacter> {}
 interface IState {
   characters: ICharacters;
   page: number;
+  pages: number;
+
   notFound: boolean;
 }
 
 const initialState = {
   characters: [],
   page: 1,
+  pages: 100,
   notFound: false,
 } as IState;
 
@@ -54,17 +61,15 @@ export const characterSlice = createSlice({
   name: "character",
   initialState,
   reducers: {
-    nextCharacter(state: IState) {
-      state.page = state.page + 1;
-    },
-    prevCharacter: (state: IState) => {
-      state.page = state.page - 1;
+    setCharacterPage(state: IState, action: PayloadAction<{ page: number }>) {
+      state.page = action.payload.page;
     },
   },
   extraReducers: (builder) => {
     builder.addCase(getCharacters.fulfilled, (state: IState, action) => {
       state.notFound = false;
       state.characters = action.payload.results;
+      state.pages = action.payload.info.pages;
     });
     builder.addCase(filterCharacters.fulfilled, (state: IState, action) => {
       if (action.payload.error) {
@@ -78,6 +83,6 @@ export const characterSlice = createSlice({
   },
 });
 
-export const { nextCharacter, prevCharacter } = characterSlice.actions;
+export const { setCharacterPage } = characterSlice.actions;
 
 export default characterSlice.reducer;
