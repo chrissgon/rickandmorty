@@ -18,7 +18,13 @@ export default function OrganismEpisodeCarousel() {
       <article className="overflow-x-auto snap-x snap-mandatory">
         <div className="flex gap-5 w-auto py-5">
           {episodes.map((episode) => {
-            return <OrganismEpisodeCard key={episode.id} episode={episode} className="snap-center sm:snap-start w-full max-w-[250px] min-w-[250px]" />;
+            return (
+              <OrganismEpisodeCard
+                className="snap-center sm:snap-start w-full max-w-[250px] min-w-[250px]"
+                key={episode.id}
+                episode={episode}
+              />
+            );
           })}
         </div>
       </article>

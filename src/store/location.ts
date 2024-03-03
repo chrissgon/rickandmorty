@@ -14,12 +14,14 @@ export interface ILocations extends Array<ILocation> {}
 interface IState {
   locations: ILocations;
   page: number;
+  pages: number;
   notFound: boolean;
 }
 
 const initialState = {
   locations: [],
   page: 1,
+  pages: 100,
   notFound: false,
 } as IState;
 
@@ -53,6 +55,7 @@ export const locationSlice = createSlice({
     builder.addCase(getLocations.fulfilled, (state: IState, action) => {
       state.notFound = false;
       state.locations = action.payload.results;
+      state.pages = action.payload.info.pages;
     });
     builder.addCase(filterLocations.fulfilled, (state: IState, action) => {
       if (action.payload.error) {

@@ -18,7 +18,13 @@ export default function OrganismLocationCarousel() {
       <article className="overflow-x-auto snap-x snap-mandatory">
         <div className="flex gap-5 w-auto py-5">
           {location.map((location) => {
-            return <OrganismLocationCard key={location.name} {...location} />;
+            return (
+              <OrganismLocationCard
+                className="snap-center sm:snap-start flex flex-col items-center  w-full max-w-[250px] min-w-[250px]"
+                key={location.id}
+                location={location}
+              />
+            );
           })}
         </div>
       </article>
