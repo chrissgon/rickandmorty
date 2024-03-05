@@ -3,11 +3,10 @@ import { useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import {
-  getCharacters,
-  getEpisodes,
-  getLocations,
-  useAppDispatch,
-  useAppSelector,
+	firstCharacters,
+	firstEpisodes,
+	firstLocations,
+	useAppDispatch,
 } from "./store";
 
 import AtomFooter from "./components/Atom.Footer";
@@ -20,32 +19,29 @@ import LocationsPage from "./pages/locations";
 import LocationPage from "./pages/location";
 
 export default function App() {
-  const dispatch = useAppDispatch();
-  const pageCharacter = useAppSelector((state) => state.character.page);
-  const pageEpisode = useAppSelector((state) => state.episode.page);
-  const pageLocation = useAppSelector((state) => state.location.page);
+	const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    dispatch(getCharacters(pageCharacter));
-    dispatch(getEpisodes(pageEpisode));
-    dispatch(getLocations(pageLocation));
-  }, [dispatch, pageCharacter, pageEpisode, pageLocation]);
+	useEffect(() => {
+		dispatch(firstCharacters())
+		dispatch(firstEpisodes())
+		dispatch(firstLocations())
+	}, [dispatch]);
 
-  return (
-    <Router>
-      <div className="p-10 xl:p-20 xl:pb-5 flex flex-col gap-10">
-        <Routes>
-          <Route path="/" element={<IndexPage />} />
-          <Route path="/characters" element={<CharactersPage />} />
-          <Route path="/character/:id" element={<CharacterPage />} />
-          <Route path="/episodes" element={<EpisodesPage />} />
-          <Route path="/episode/:id" element={<EpisodePage />} />
-          <Route path="/locations" element={<LocationsPage />} />
-          <Route path="/location/:id" element={<LocationPage />} />
-        </Routes>
+	return (
+		<Router>
+			<div className="p-10 xl:p-20 xl:pb-5 flex flex-col gap-10">
+				<Routes>
+					<Route path="/" element={<IndexPage />} />
+					<Route path="/characters" element={<CharactersPage />} />
+					<Route path="/character/:id" element={<CharacterPage />} />
+					<Route path="/episodes" element={<EpisodesPage />} />
+					<Route path="/episode/:id" element={<EpisodePage />} />
+					<Route path="/locations" element={<LocationsPage />} />
+					<Route path="/location/:id" element={<LocationPage />} />
+				</Routes>
 
-        <AtomFooter />
-      </div>
-    </Router>
-  );
+				<AtomFooter />
+			</div>
+		</Router>
+	);
 }

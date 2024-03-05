@@ -5,17 +5,17 @@ import OrganismLocationCarousel from "../components/Organism.LocationCarousel";
 import TemplateHomeSection from "../components/Template.HomeSection";
 
 export default function IndexPage() {
-  return (
-    <>
-      <TemplateHomeSection />
+	return (
+		<>
+			<TemplateHomeSection />
 
-      <AtomFavoriteButton className="md:hidden fixed bottom-10 right-10" />
+			<AtomFavoriteButton className="md:hidden fixed bottom-10 right-10" />
 
-      <OrganismCharacterCarousel />
+			<OrganismCharacterCarousel />
 
-      <OrganismEpisodeCarousel />
+			<OrganismEpisodeCarousel />
 
-      <OrganismLocationCarousel />
-    </>
-  );
+			<OrganismLocationCarousel />
+		</>
+	);
 }
