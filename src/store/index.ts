@@ -6,11 +6,11 @@ import episode from "./episode";
 import location from "./location";
 
 export const store = configureStore({
-	reducer: {
-		character,
-		episode,
-		location
-	},
+  reducer: {
+    character,
+    episode,
+    location
+  },
 });
 
 export const useAppDispatch = useDispatch.withTypes<AppDispatch>();

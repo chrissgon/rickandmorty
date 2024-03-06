@@ -3,31 +3,31 @@ import { useAppSelector } from "../store";
 import OrganismLocationCard from "./Organism.LocationCard";
 
 export default function OrganismLocationCarousel() {
-	const filteredLocations = useAppSelector((state) => state.location.filteredLocations);
-	return (
-		<section id="locations" className="relative">
-			<header className="flex justify-between items-center">
-				<a href="#home" className="text-xl font-bold">
-					<i className="bi-search text-base mr-2"></i>
+  const filteredLocations = useAppSelector((state) => state.location.filteredLocations);
+  return (
+    <section id="locations" className="relative">
+      <header className="flex justify-between items-center">
+        <a href="#home" className="text-xl font-bold">
+          <i className="bi-search text-base mr-2"></i>
           Locations
-				</a>
-				<Link to="/locations" className="btn btn-white">
+        </a>
+        <Link to="/locations" className="btn btn-white">
           See all <i className="bi-chevron-right"></i>
-				</Link>
-			</header>
-			<article className="overflow-x-auto snap-x snap-mandatory">
-				<div className="flex gap-5 w-auto py-5">
-					{filteredLocations.map((location) => {
-						return (
-							<OrganismLocationCard
-								className="snap-center sm:snap-start flex flex-col items-center  w-full max-w-[250px] min-w-[250px]"
-								key={location.id}
-								location={location}
-							/>
-						);
-					})}
-				</div>
-			</article>
-		</section>
-	);
+        </Link>
+      </header>
+      <article className="overflow-x-auto snap-x snap-mandatory">
+        <div className="flex gap-5 w-auto py-5">
+          {filteredLocations.map((location) => {
+            return (
+              <OrganismLocationCard
+                className="snap-center sm:snap-start flex flex-col items-center  w-full max-w-[250px] min-w-[250px]"
+                key={location.id}
+                location={location}
+              />
+            );
+          })}
+        </div>
+      </article>
+    </section>
+  );
 }
