@@ -3,15 +3,22 @@ import { Link } from "react-router-dom";
 
 import logo from "/logo.svg";
 import banner from "/rickmorty.png";
+import AtomFavoriteButton from "./Atom.FavoriteButton";
 
-export default function TemplateFavoriteSection(props: PropsWithChildren) {
+export default function TemplateGenericSection(
+  props: PropsWithChildren<{ isFavoritePage?: boolean }>
+) {
   return (
-    <section className="relative flex flex-wrap gap-10">
+    <section id="generic" className="relative flex flex-wrap gap-10">
       <header className="w-full flex flex-col gap-10 z-10">
-        <Link to="/" className="btn btn-white w-fit">
-          <i className="bi-chevron-left mr-2"></i>
-          Back
-        </Link>
+        <div className="flex justify-between gap-10">
+          <Link to="/" className="btn btn-white w-fit">
+            <i className="bi-chevron-left mr-2"></i>
+            Back
+          </Link>
+
+          {!props.isFavoritePage && <AtomFavoriteButton />}
+        </div>
         <img
           loading="lazy"
           src={logo}
@@ -35,6 +42,11 @@ export default function TemplateFavoriteSection(props: PropsWithChildren) {
           className="absolute w-[300px] -top-12 pl-10"
         />
       </aside>
+
+      <a
+        href="#body"
+        className="bi-chevron-up btn btn-white opacity-80 !py-3 rounded-full fixed bottom-10 right-10 z-20"
+      ></a>
     </section>
   );
 }

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { ICharacter } from "../store";
 import AtomIconPlanet from "./Atom.IconPlanet";
-import {HTMLAttributes} from "react";
+import { HTMLAttributes } from "react";
 
 interface CharacterCardElement extends HTMLAttributes<HTMLDivElement> {
   character: ICharacter;
@@ -40,7 +40,7 @@ export default function OrganismCharacterCard(props: CharacterCardElement) {
           </p>
           <p className="w-full text-ellipsis overflow-hidden whitespace-nowrap">
             <AtomIconPlanet className="w-4 inline h-fit mr-2" />
-            {props.character.location.name}
+            {props.character.origin.name}
           </p>
         </article>
 

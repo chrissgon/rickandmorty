@@ -17,14 +17,15 @@ import EpisodesPage from "./pages/episodes";
 import EpisodePage from "./pages/episode";
 import LocationsPage from "./pages/locations";
 import LocationPage from "./pages/location";
+import FavoritesPage from "./pages/favorites";
 
 export default function App() {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(firstCharacters())
-    dispatch(firstEpisodes())
-    dispatch(firstLocations())
+    dispatch(firstCharacters());
+    dispatch(firstEpisodes());
+    dispatch(firstLocations());
   }, [dispatch]);
 
   return (
@@ -38,6 +39,7 @@ export default function App() {
           <Route path="/episode/:id" element={<EpisodePage />} />
           <Route path="/locations" element={<LocationsPage />} />
           <Route path="/location/:id" element={<LocationPage />} />
+          <Route path="/favorites" element={<FavoritesPage />} />
         </Routes>
 
         <AtomFooter />

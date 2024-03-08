@@ -20,6 +20,7 @@ export interface ICharacter {
   url: string;
   episode: string[];
   location: ICharacterLocation;
+  origin: ICharacterLocation;
 }
 
 export interface ICharacters extends Array<ICharacter> {}

@@ -62,10 +62,10 @@ export default function MoleculeFilterSearch() {
     <div className="w-full flex flex-col gap-3 md:max-w-[500px]">
       <label
         className={`field-group group group-row ${
-          !notFound || "field-group-error"
+          notFound && "field-group-error"
         }`}
         // @ts-expect-error Custom props
-        message={!notFound || "No results found"}
+        message={notFound && "No results found"}
       >
         <select onChange={changeType} className="input group-item max-w-fit">
           <MoleculeFilterSearch.OptionsTypes />

@@ -1,12 +1,12 @@
-import TemplateFavoriteSection from "../components/Template.FavoriteSection";
+import TemplateGenericSection from "../components/Template.GenericSection";
 import OrganismCharacterPagination from "../components/Organism.CharacterPagination";
 
 export default function CharactersPage() {
   return (
     <>
-      <TemplateFavoriteSection>
+      <TemplateGenericSection>
         All the information on Rick and Morty's most beloved characters
-      </TemplateFavoriteSection>
+      </TemplateGenericSection>
       <OrganismCharacterPagination />
     </>
   );

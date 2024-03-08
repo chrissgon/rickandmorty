@@ -1,12 +1,12 @@
 import OrganismLocationPagination from "../components/Organism.LocationPagination";
-import TemplateFavoriteSection from "../components/Template.FavoriteSection";
+import TemplateGenericSection from "../components/Template.GenericSection";
 
 export default function LocationsPage() {
   return (
     <>
-      <TemplateFavoriteSection>
+      <TemplateGenericSection>
         See the craziest and strangest places in Rick and Morty
-      </TemplateFavoriteSection>
+      </TemplateGenericSection>
       <OrganismLocationPagination />
     </>
   );
