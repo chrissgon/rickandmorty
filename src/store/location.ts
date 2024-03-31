@@ -1,4 +1,8 @@
-import { createAsyncThunk, createSlice, type PayloadAction } from "@reduxjs/toolkit";
+import {
+  createAsyncThunk,
+  createSlice,
+  type PayloadAction,
+} from "@reduxjs/toolkit";
 
 export interface ILocation {
   id: string;
@@ -12,6 +16,7 @@ export interface ILocation {
 export interface ILocations extends Array<ILocation> {}
 
 interface IState {
+  location: ILocation | null;
   locations: ILocations;
   filteredLocations: ILocations;
   page: number;
@@ -20,12 +25,22 @@ interface IState {
 }
 
 const initialState = {
+  location: null,
   locations: [],
   filteredLocations: [],
   page: 1,
   pages: 100,
   notFound: false,
 } as IState;
+
+export const getLocation = createAsyncThunk(
+  "location/getLocation",
+  async (id: string) => {
+    return (
+      await fetch(`https://rickandmortyapi.com/api/location/${id}`)
+    ).json();
+  }
+);
 
 export const getLocations = createAsyncThunk(
   "location/getLocations",
@@ -63,6 +78,9 @@ export const locationSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
+    builder.addCase(getLocation.fulfilled, (state: IState, action) => {
+      state.location = action.payload;
+    });
     builder.addCase(getLocations.fulfilled, (state: IState, action) => {
       state.locations = action.payload.results;
       state.pages = action.payload.info.pages;

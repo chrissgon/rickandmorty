@@ -1,4 +1,4 @@
-import { useState, type ChangeEvent, useEffect } from "react";
+import { type ChangeEvent, useEffect, useRef, ElementRef } from "react";
 import {
   filterCharacters,
   filterEpisodes,
@@ -17,8 +17,8 @@ enum ETypes {
 }
 
 export default function MoleculeFilterSearch() {
-  const [type, setType] = useState<ETypes>(ETypes.Character);
-  const [input, setInput] = useState<string>("");
+  const type = useRef<ETypes>(ETypes.Character);
+  const inputRef = useRef<ElementRef<"input">>(null);
 
   const dispatch = useAppDispatch();
   const notFound = useAppSelector(
@@ -32,27 +32,31 @@ export default function MoleculeFilterSearch() {
 
   const actionsByType = {
     [ETypes.Character]: () => {
-      dispatch(filterCharacters({ name: input }));
+      dispatch(filterCharacters({ name: getInputRefValue() }));
     },
     [ETypes.Episode]: () => {
-      dispatch(filterEpisodes({ name: input }));
+      dispatch(filterEpisodes({ name: getInputRefValue() }));
     },
     [ETypes.Location]: () => {
-      dispatch(filterLocations({ name: input }));
+      dispatch(filterLocations({ name: getInputRefValue() }));
     },
   };
 
+  function getInputRefValue(): string {
+    return inputRef.current?.value ?? "";
+  }
+
   function changeType(e: ChangeEvent<HTMLSelectElement>): void {
-    setType(ETypes[e.target.value as keyof typeof ETypes]);
+    type.current = ETypes[e.target.value as keyof typeof ETypes];
   }
 
   function filterByType(): void {
-    if (!input.trim()) return;
-    actionsByType[type]();
+    if (!getInputRefValue().trim()) return;
+    actionsByType[type.current]();
   }
 
   function resetLists(): void {
-    if (input.trim()) return;
+    if (getInputRefValue().trim()) return;
     dispatch(firstCharacters());
     dispatch(firstEpisodes());
     dispatch(firstLocations());
@@ -65,14 +69,14 @@ export default function MoleculeFilterSearch() {
           notFound && "field-group-error"
         }`}
         // @ts-expect-error Custom props
-        message={notFound && "No results found"}
+        message={notFound ? "No results found" : ""}
       >
         <select onChange={changeType} className="input group-item max-w-fit">
           <MoleculeFilterSearch.OptionsTypes />
         </select>
 
         <input
-          onChange={(e) => setInput(e.target.value)}
+          ref={inputRef}
           onBlur={resetLists}
           type="search"
           className="input group-item w-1"

@@ -11,6 +11,7 @@ export interface IEpisode {
 export interface IEpisodes extends Array<IEpisode> {}
 
 interface IState {
+  episode: IEpisode | null;
   episodes: IEpisodes;
   filteredEpisodes: IEpisodes;
   page: number;
@@ -19,12 +20,22 @@ interface IState {
 }
 
 const initialState = {
+  episode: null,
   episodes: [],
   filteredEpisodes: [],
   page: 1,
   pages: 100,
   notFound: false,
 } as IState;
+
+export const getEpisode = createAsyncThunk(
+  "episode/getEpisode",
+  async (id:string) => {
+    return (
+      await fetch(`https://rickandmortyapi.com/api/episode/${id}`)
+    ).json();
+  }
+);
 
 export const getEpisodes = createAsyncThunk(
   "episode/getEpisodes",
@@ -47,7 +58,6 @@ export const firstEpisodes = createAsyncThunk(
 export const filterEpisodes = createAsyncThunk(
   "episode/filterEpisodes",
   async ({ name }: { name: string }) => {
-    console.log(name);
     return (
       await fetch(`https://rickandmortyapi.com/api/episode?name=${name}`)
     ).json();
@@ -63,6 +73,9 @@ export const episodeSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
+    builder.addCase(getEpisode.fulfilled, (state: IState, action) => {
+      state.episode = action.payload;
+    });
     builder.addCase(getEpisodes.fulfilled, (state: IState, action) => {
       state.episodes = action.payload.results;
       state.pages = action.payload.info.pages;
