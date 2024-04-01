@@ -11,7 +11,7 @@ Explore dimensions, characters and episodes about Rick and Morty multiverse 🌌
 
 ## ⚠️ Requirements
 
-This project uses [Bun](https://bun.sh/), but you can also use the [NodeJS](https://nodejs.org/en) instead.
+This project uses [Bun](https://bun.sh/), but you can also use the [Node](https://nodejs.org/en) instead.
 
 ## 📦 Install
 
