@@ -1,5 +1,12 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-import { ICharacter, ICharacters, IEpisode, IEpisodes, ILocation, ILocations } from ".";
+import {
+  ICharacter,
+  ICharacters,
+  IEpisode,
+  IEpisodes,
+  ILocation,
+  ILocations,
+} from ".";
 
 export interface IState {
   characters: {
@@ -15,10 +22,11 @@ export interface IState {
 
 const initialState = {
   characters:
-    JSON.parse(sessionStorage.getItem("favorite:character") ?? "") ?? {},
-  episodes: JSON.parse(sessionStorage.getItem("favorite:episode") ?? "") ?? {},
+    JSON.parse(sessionStorage.getItem("favorite:character") ?? "{}") ?? {},
+  episodes:
+    JSON.parse(sessionStorage.getItem("favorite:episode") ?? "{}") ?? {},
   locations:
-    JSON.parse(sessionStorage.getItem("favorite:location") ?? "") ?? {},
+    JSON.parse(sessionStorage.getItem("favorite:location") ?? "{}") ?? {},
 } as IState;
 
 export const favoriteSlice = createSlice({
