@@ -11,6 +11,7 @@ export default function EpisodePage() {
   const episode = useAppSelector((state) => state.episode.episode);
 
   useEffect(() => {
+    document.location.href = "#body";
     dispatch(getEpisode(params.id!));
   }, [dispatch, params]);
 
@@ -44,8 +45,6 @@ export default function EpisodePage() {
                 characters participated in this episode
               </span>
             </footer>
-            {/* <header className="flex items-center gap-2">
-            </header> */}
           </article>
 
           <OrganismPageLayout.DefaultBanner />
