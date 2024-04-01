@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { ICharacter } from "../store";
 import AtomIconPlanet from "./Atom.IconPlanet";
 import { HTMLAttributes } from "react";
+import AtomFavoriteIcon from "./Atom.FavoriteIcon";
 
 interface CharacterCardElement extends HTMLAttributes<HTMLDivElement> {
   character: ICharacter;
@@ -25,7 +26,7 @@ export default function OrganismCharacterCard(props: CharacterCardElement) {
           <h4 className="font-bold text-md whitespace-nowrap text-ellipsis overflow-hidden">
             {props.character.name}
           </h4>
-          <i className="bi-heart text-error text-xl cursor-pointer"></i>
+          <AtomFavoriteIcon character={props.character} />
         </header>
 
         {/* info */}

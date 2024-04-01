@@ -12,6 +12,7 @@ import OrganismLocationCard from "../components/Organism.LocationCard";
 
 import OrganismPageLayout from "../components/Organism.PageLayout";
 import home from "/bg-home.png";
+import AtomFavoriteIcon from "../components/Atom.FavoriteIcon";
 
 export default function CharacterPage() {
   // data
@@ -64,7 +65,7 @@ export default function CharacterPage() {
             <div className="flex-1 flex flex-col gap-4">
               <header className="flex gap-2 items-center">
                 <h1 className="text-3xl font-bold">{character.name}</h1>
-                <i className="bi-heart text-error text-xl cursor-pointer"></i>
+                <AtomFavoriteIcon character={character} />
               </header>
 
               <p className=" inline-flex gap-2 items-center">

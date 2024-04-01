@@ -3,6 +3,7 @@ import { getEpisode, useAppDispatch, useAppSelector } from "../store";
 import { useEffect } from "react";
 import OrganismPageLayout from "../components/Organism.PageLayout";
 import OrganismEpisodePagination from "../components/Organism.EpisodePagination";
+import AtomFavoriteIcon from "../components/Atom.FavoriteIcon";
 
 export default function EpisodePage() {
   const params = useParams();
@@ -24,7 +25,10 @@ export default function EpisodePage() {
             <h1 className="text-3xl font-bold mt-">
               {episode.name}
 
-              <i className="bi-heart text-error text-xl cursor-pointer align-middle ml-2"></i>
+              <AtomFavoriteIcon
+                episode={episode}
+                className="align-middle ml-2"
+              />
             </h1>
 
             <aside className="flex gap-2 flex-wrap">

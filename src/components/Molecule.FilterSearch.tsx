@@ -1,5 +1,6 @@
 import { type ChangeEvent, useEffect, useRef, ElementRef } from "react";
 import {
+  ETypes,
   filterCharacters,
   filterEpisodes,
   filterLocations,
@@ -10,11 +11,7 @@ import {
   useAppSelector,
 } from "../store";
 
-enum ETypes {
-  Character = "Character",
-  Episode = "Episode",
-  Location = "Location",
-}
+
 
 export default function MoleculeFilterSearch() {
   const type = useRef<ETypes>(ETypes.Character);

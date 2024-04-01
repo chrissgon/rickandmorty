@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import OrganismPageLayout from "../components/Organism.PageLayout";
 import OrganismLocationPagination from "../components/Organism.LocationPagination";
 import AtomIconPlanet from "../components/Atom.IconPlanet";
+import AtomFavoriteIcon from "../components/Atom.FavoriteIcon";
 
 export default function LocationPage() {
   // data
@@ -27,7 +28,10 @@ export default function LocationPage() {
             <h1 className="text-3xl font-bold mt-">
               {location.name}
 
-              <i className="bi-heart text-error text-xl cursor-pointer align-middle ml-2"></i>
+              <AtomFavoriteIcon
+                location={location}
+                className="align-middle ml-2"
+              />
             </h1>
 
             <aside className="flex gap-2 flex-wrap">

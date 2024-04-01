@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { ILocation } from "../store";
 import AtomIconPlanet from "./Atom.IconPlanet";
 import { HTMLAttributes } from "react";
+import AtomFavoriteIcon from "./Atom.FavoriteIcon";
 
 interface LocationCardElement extends HTMLAttributes<HTMLDivElement> {
   location: ILocation;
@@ -21,7 +22,7 @@ export default function OrganismLocationCard(props: LocationCardElement) {
 
             <p>{props.location.type}</p>
           </h4>
-          <i className="bi-heart text-error text-xl cursor-pointer"></i>
+          <AtomFavoriteIcon location={props.location} />
         </header>
 
         <Link

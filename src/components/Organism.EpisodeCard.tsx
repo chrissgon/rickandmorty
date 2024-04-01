@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { IEpisode } from "../store";
 import { HTMLAttributes } from "react";
+import AtomFavoriteIcon from "./Atom.FavoriteIcon";
 
 interface EpisodeCardElement extends HTMLAttributes<HTMLDivElement> {
   episode: IEpisode;
@@ -19,7 +20,7 @@ export default function OrginanismEpisodeCard(props: EpisodeCardElement) {
             </p>
             <p>{props.episode.episode}</p>
           </h4>
-          <i className="bi-heart text-error text-xl cursor-pointer"></i>
+          <AtomFavoriteIcon episode={props.episode} />
         </header>
 
         <Link
