@@ -25,7 +25,7 @@ export default function LocationPage() {
         <OrganismPageLayout>
           <article className="flex flex-col gap-2">
             <AtomIconPlanet className="w-10" />
-            <h1 className="text-3xl font-bold mt-">
+            <h1 className="text-3xl font-bold md:max-w-[400px] lg:max-w-none">
               {location.name}
 
               <AtomFavoriteIcon

@@ -1,9 +1,10 @@
 import OrganismCharacterCard from "./Organism.CharacterCard";
-import { useAppSelector } from "../store";
+import { ICharacters } from "../store";
 import { Link } from "react-router-dom";
 
-export default function OrganismCharacterCarousel() {
-  const filteredCharacters = useAppSelector((state) => state.character.filteredCharacters);
+export default function OrganismCharacterCarousel(props: {
+  characters: ICharacters;
+}) {
   return (
     <section id="characters" className="relative">
       <header className="flex justify-between items-center">
@@ -17,7 +18,7 @@ export default function OrganismCharacterCarousel() {
       </header>
       <article className="overflow-x-auto snap-x snap-mandatory">
         <div className="flex gap-5 w-auto py-5">
-          {filteredCharacters.map((character) => {
+          {props.characters.map((character) => {
             return (
               <OrganismCharacterCard
                 key={character.id}

@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import { useAppSelector } from "../store";
+import { ILocations } from "../store";
 import OrganismLocationCard from "./Organism.LocationCard";
 
-export default function OrganismLocationCarousel() {
-  const filteredLocations = useAppSelector((state) => state.location.filteredLocations);
+export default function OrganismLocationCarousel(props:{locations:ILocations}) {
+  
   return (
     <section id="locations" className="relative">
       <header className="flex justify-between items-center">
@@ -17,7 +17,7 @@ export default function OrganismLocationCarousel() {
       </header>
       <article className="overflow-x-auto snap-x snap-mandatory">
         <div className="flex gap-5 w-auto py-5">
-          {filteredLocations.map((location) => {
+          {props.locations.map((location) => {
             return (
               <OrganismLocationCard
                 className="snap-center sm:snap-start flex flex-col items-center  w-full max-w-[250px] min-w-[250px]"

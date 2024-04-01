@@ -1,5 +1,5 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-import { ICharacter, IEpisode, ILocation } from ".";
+import { ICharacter, ICharacters, IEpisode, IEpisodes, ILocation, ILocations } from ".";
 
 export interface IState {
   characters: {
@@ -14,9 +14,11 @@ export interface IState {
 }
 
 const initialState = {
-  characters: {},
-  episodes: {},
-  locations: {},
+  characters:
+    JSON.parse(sessionStorage.getItem("favorite:character") ?? "") ?? {},
+  episodes: JSON.parse(sessionStorage.getItem("favorite:episode") ?? "") ?? {},
+  locations:
+    JSON.parse(sessionStorage.getItem("favorite:location") ?? "") ?? {},
 } as IState;
 
 export const favoriteSlice = createSlice({
@@ -24,25 +26,46 @@ export const favoriteSlice = createSlice({
   initialState,
   reducers: {
     favoriteCharacter(state: IState, action: PayloadAction<ICharacter>) {
-      if (state.characters[action.payload.id]) {
-        delete state.characters[action.payload.id];
-        return;
-      }
+      const unfavorite = !!state.characters[action.payload.id];
+
       state.characters[action.payload.id] = action.payload;
+
+      if (unfavorite) {
+        delete state.characters[action.payload.id];
+      }
+
+      sessionStorage.setItem(
+        "favorite:character",
+        JSON.stringify(state.characters)
+      );
     },
     favoriteEpisode(state: IState, action: PayloadAction<IEpisode>) {
-      if (state.episodes[action.payload.id]) {
-        delete state.episodes[action.payload.id];
-        return;
-      }
+      const unfavorite = !!state.episodes[action.payload.id];
+
       state.episodes[action.payload.id] = action.payload;
+
+      if (unfavorite) {
+        delete state.episodes[action.payload.id];
+      }
+
+      sessionStorage.setItem(
+        "favorite:episode",
+        JSON.stringify(state.episodes)
+      );
     },
     favoriteLocation(state: IState, action: PayloadAction<ILocation>) {
-      if (state.locations[action.payload.id]) {
-        delete state.locations[action.payload.id];
-        return;
-      }
+      const unfavorite = !!state.locations[action.payload.id];
+
       state.locations[action.payload.id] = action.payload;
+
+      if (unfavorite) {
+        delete state.locations[action.payload.id];
+      }
+
+      sessionStorage.setItem(
+        "favorite:location",
+        JSON.stringify(state.locations)
+      );
     },
   },
 });
@@ -62,6 +85,31 @@ export function isFavoritedLocation(state: IState, { id }: ILocation): boolean {
   return !!state.locations[id];
 }
 
-export const { favoriteCharacter, favoriteEpisode, favoriteLocation } = favoriteSlice.actions;
+export function getFavoriteCharactersByArray(state: IState): ICharacters {
+  const items: ICharacters = [];
+  for (const i in state.characters) {
+    items.push(state.characters[i]);
+  }
+  return items;
+}
+
+export function getFavoriteEpisodesByArray(state: IState): IEpisodes {
+  const items: IEpisodes = [];
+  for (const i in state.episodes) {
+    items.push(state.episodes[i]);
+  }
+  return items;
+}
+
+export function getFavoriteLocationsByArray(state: IState): ILocations {
+  const items: ILocations = [];
+  for (const i in state.locations) {
+    items.push(state.locations[i]);
+  }
+  return items;
+}
+
+export const { favoriteCharacter, favoriteEpisode, favoriteLocation } =
+  favoriteSlice.actions;
 
 export default favoriteSlice.reducer;

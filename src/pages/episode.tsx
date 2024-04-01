@@ -22,7 +22,7 @@ export default function EpisodePage() {
         <OrganismPageLayout>
           <article className="flex flex-col gap-2">
             <i className="bi bi-collection-play text-4xl"></i>
-            <h1 className="text-3xl font-bold mt-">
+            <h1 className="text-3xl font-bold md:max-w-[400px] lg:max-w-none">
               {episode.name}
 
               <AtomFavoriteIcon
