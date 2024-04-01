@@ -18,7 +18,8 @@ export default function OrganismLocationCard(props: LocationCardElement) {
             <p className="max-w-[130px] font-bold whitespace-nowrap overflow-hidden text-ellipsis">
               {props.location.name}
             </p>
-            <p>Planet</p>
+
+            <p>{props.location.type}</p>
           </h4>
           <i className="bi-heart text-error text-xl cursor-pointer"></i>
         </header>
