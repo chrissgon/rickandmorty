@@ -26,13 +26,13 @@ git clone git@github.com:chrissgon/rickandmorty.git
 - Install dependencies.
 
 ```bash
-npm i
+bun i
 ```
 
 - Run application.
 
 ```bash
-npm run dev
+bun run dev
 ```
 
 ## 📝 Anotations
@@ -43,6 +43,8 @@ Application hosted in <a href="http://localhost:5173/">http://localhost:5173/</a
 
 - [Figma Design](<https://www.figma.com/file/1TK4NdE2NmVVz8tdz4CFso/Rick-and-Morty-(Community)>)
 - [Redux JS](https://redux.js.org/introduction/getting-started)
+- [React Router](https://reactrouter.com/en/main)
+- [React Course](https://www.youtube.com/playlist?list=PLpPqplz6dKxW5ZfERUPoYTtNUNvrEebAR)
 
 ## 💪🏻 Contribution
 
