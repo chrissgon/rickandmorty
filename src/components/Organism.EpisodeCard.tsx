@@ -2,11 +2,11 @@ import { Link } from "react-router-dom";
 import { IEpisode } from "../store";
 import { HTMLAttributes } from "react";
 
-interface EpisodeCardElement extends HTMLAttributes<HTMLDivElement>{
-  episode: IEpisode
+interface EpisodeCardElement extends HTMLAttributes<HTMLDivElement> {
+  episode: IEpisode;
 }
 
-export default function OrganismEpisodeCard(props: EpisodeCardElement) {
+export default function OrginanismEpisodeCard(props: EpisodeCardElement) {
   return (
     <div className={`card relative h-fit ${props.className}`}>
       <article className="card-content">

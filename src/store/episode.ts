@@ -1,4 +1,8 @@
-import { createAsyncThunk, createSlice, type PayloadAction } from "@reduxjs/toolkit";
+import {
+  createAsyncThunk,
+  createSlice,
+  type PayloadAction,
+} from "@reduxjs/toolkit";
 
 export interface IEpisode {
   id: string;
@@ -6,9 +10,16 @@ export interface IEpisode {
   episode: string;
   characters: string[];
   url: string;
+  releasedAt: string;
 }
 
 export interface IEpisodes extends Array<IEpisode> {}
+
+interface IPrimitiveEpisode extends IEpisode {
+  air_date: string;
+}
+
+interface IPrimitiveEpisodes extends Array<IPrimitiveEpisode> {}
 
 interface IState {
   episode: IEpisode | null;
@@ -17,6 +28,27 @@ interface IState {
   page: number;
   pages: number;
   notFound: boolean;
+}
+
+function EpisodeDTO(primitive: IPrimitiveEpisode): IEpisode {
+  return {
+    ...primitive,
+    releasedAt: primitive.air_date,
+  };
+}
+function EpisodesDTO(primitives: IPrimitiveEpisodes): IEpisodes {
+  const episodes: IEpisodes = [];
+
+  for (const i in primitives) {
+    const primitive = primitives[i];
+
+    episodes.push({
+      ...primitive,
+      releasedAt: primitive.air_date,
+    });
+  }
+
+  return episodes;
 }
 
 const initialState = {
@@ -30,7 +62,7 @@ const initialState = {
 
 export const getEpisode = createAsyncThunk(
   "episode/getEpisode",
-  async (id:string) => {
+  async (id: string) => {
     return (
       await fetch(`https://rickandmortyapi.com/api/episode/${id}`)
     ).json();
@@ -74,10 +106,10 @@ export const episodeSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(getEpisode.fulfilled, (state: IState, action) => {
-      state.episode = action.payload;
+      state.episode = EpisodeDTO(action.payload);
     });
     builder.addCase(getEpisodes.fulfilled, (state: IState, action) => {
-      state.episodes = action.payload.results;
+      state.episodes = EpisodesDTO(action.payload.results);
       state.pages = action.payload.info.pages;
     });
     builder.addCase(firstEpisodes.fulfilled, (state: IState, action) => {

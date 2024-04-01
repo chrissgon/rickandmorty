@@ -11,6 +11,7 @@ import OrganismCharacterPagination from "../components/Organism.CharacterPaginat
 import OrganismLocationCard from "../components/Organism.LocationCard";
 
 import OrganismPageLayout from "../components/Organism.PageLayout";
+import home from "/bg-home.png";
 
 export default function CharacterPage() {
   // data
@@ -109,6 +110,15 @@ export default function CharacterPage() {
               )}
             </aside>
           </div>
+
+          <aside className="max-lg:hidden flex justify-center items-center flex-1">
+            <img
+              loading="lazy"
+              src={home}
+              alt="Rick and Morty art"
+              className="absolute w-[700px] -top-6 pl-10 -right-96 xl:-right-40"
+            />
+          </aside>
         </OrganismPageLayout>
 
         <hr />
