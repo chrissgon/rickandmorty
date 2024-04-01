@@ -15,7 +15,7 @@ Este projeto utiliza [Bun](https://bun.sh/), mas pode-se utilizar o [Node](https
 
 ## 📦 Instalação
 
-- Clonar o repositório.
+- Clonar repositório.
 
 ```bash
 git clone git@github.com:chrissgon/rickandmorty.git
@@ -23,13 +23,13 @@ git clone git@github.com:chrissgon/rickandmorty.git
 
 ## 🚀 Quick Start
 
-- Instale as dependências
+- Instalar dependências
 
 ```bash
 bun i
 ```
 
-- Inicie a aplicação.
+- Iniciar aplicação.
 
 ```bash
 bun run dev
