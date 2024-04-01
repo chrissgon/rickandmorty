@@ -2,7 +2,7 @@
 
 # Rick And Morty
 
-Explore the multiverse of Rick and Morty with our comprehensive website, featuring episode guides, character bios, fan theories, and more!
+Explore dimensions, characters and episodes about Rick and Morty multiverse 🌌🚀
 
 ## 🌍 Translations
 
@@ -11,7 +11,7 @@ Explore the multiverse of Rick and Morty with our comprehensive website, featuri
 
 ## ⚠️ Requirements
 
-This project requires the ... installed.
+This project uses [Bun](https://bun.sh/), but you can also use the [NodeJS](https://nodejs.org/en) instead.
 
 ## 📦 Install
 
