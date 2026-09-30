@@ -1,0 +1,42 @@
+/*
+ * Bootstrap Icons, self-hosted from the bootstrap-icons package (pinned in
+ * package.json). Only the SVGs the app uses are bundled: each one is drawn as
+ * a mask on a ::before, in the text color and 1em square, like the icon font.
+ * The URL goes through --bi so the prefixed and unprefixed mask-image share
+ * one copy of each inlined SVG.
+ *
+ * To add an icon: add a rule below with its file from
+ * node_modules/bootstrap-icons/icons/, then use class "bi-<name>".
+ */
+[class^="bi-"]::before,
+[class*=" bi-"]::before {
+  content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.125em;
+  background-color: currentColor;
+  -webkit-mask-image: var(--bi);
+  mask-image: var(--bi);
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+}
+
+.bi-activity::before { --bi: url("bootstrap-icons/icons/activity.svg"); }
+.bi-box::before { --bi: url("bootstrap-icons/icons/box.svg"); }
+.bi-brightness-high::before { --bi: url("bootstrap-icons/icons/brightness-high.svg"); }
+.bi-calendar-event::before { --bi: url("bootstrap-icons/icons/calendar-event.svg"); }
+.bi-chevron-left::before { --bi: url("bootstrap-icons/icons/chevron-left.svg"); }
+.bi-chevron-right::before { --bi: url("bootstrap-icons/icons/chevron-right.svg"); }
+.bi-chevron-up::before { --bi: url("bootstrap-icons/icons/chevron-up.svg"); }
+.bi-collection-play::before { --bi: url("bootstrap-icons/icons/collection-play.svg"); }
+.bi-gender-ambiguous::before { --bi: url("bootstrap-icons/icons/gender-ambiguous.svg"); }
+.bi-github::before { --bi: url("bootstrap-icons/icons/github.svg"); }
+.bi-heart::before { --bi: url("bootstrap-icons/icons/heart.svg"); }
+.bi-heart-fill::before { --bi: url("bootstrap-icons/icons/heart-fill.svg"); }
+.bi-info-circle-fill::before { --bi: url("bootstrap-icons/icons/info-circle-fill.svg"); }
+.bi-moon::before { --bi: url("bootstrap-icons/icons/moon.svg"); }
+.bi-person::before { --bi: url("bootstrap-icons/icons/person.svg"); }
+.bi-play-btn::before { --bi: url("bootstrap-icons/icons/play-btn.svg"); }
+.bi-search::before { --bi: url("bootstrap-icons/icons/search.svg"); }
