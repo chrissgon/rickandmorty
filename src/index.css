@@ -1,6 +1,107 @@
+/*
+ * Cascade order: the app's base rules sit below Perfect UI's layers, so a
+ * pui-* class always beats them; Tailwind 3 writes its utilities outside any
+ * layer, so they beat both.
+ */
+@layer app-base, pui;
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/*
+ * Perfect UI 1.0 ships no reset and Preflight is off (see tailwind.config.ts):
+ * these are the few element defaults the app relied on from Preflight and the
+ * 0.x reset.
+ */
+@layer app-base {
+  *,
+  ::before,
+  ::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  html,
+  body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--pui-bg);
+    color: var(--pui-text);
+    font-family: theme("fontFamily.sans");
+    font-size: 0.875rem;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0;
+    font-size: inherit;
+    font-weight: inherit;
+  }
+
+  p,
+  figure {
+    margin: 0;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: inherit;
+    cursor: pointer;
+  }
+
+  img,
+  svg {
+    display: block;
+    vertical-align: middle;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  hr {
+    height: 0;
+    margin: 0;
+    border: 0;
+    border-top: 1px solid var(--pui-border);
+    color: inherit;
+  }
+
+  button,
+  input,
+  select {
+    margin: 0;
+    font: inherit;
+    color: inherit;
+  }
+
+  button {
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  /* a disabled page link must not be clickable (0.x did this for [disabled]) */
+  [aria-disabled="true"] {
+    pointer-events: none;
+  }
+}
 
 html,
 body {
