@@ -6,3 +6,8 @@ html,
 body {
   scroll-behavior: smooth;
 }
+
+/* perfectui: the app's theme color (was setThemeColor, tones 600 and 500) */
+:root {
+  --pui-theme: light-dark(#118da9, #11b0c8);
+}

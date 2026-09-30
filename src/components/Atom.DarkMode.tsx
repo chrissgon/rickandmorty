@@ -1,4 +1,4 @@
-import { setMode } from "@chrissgon/perfectui";
+import { setMode } from "@chrissgon/perfectui/mode";
 import { useState } from "react";
 
 export default function AtomDarkMode() {
