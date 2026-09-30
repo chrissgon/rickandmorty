@@ -28,7 +28,7 @@ export default function TemplateGenericSection(
       </header>
       <article className="w-full md:w-1/2 flex flex-col justify-center gap-8 mb-12">
         <h1 className="text-4xl font-bold">
-          Everthing in one <span className="text-4xl text-pui-theme"> fuck#$%</span>{" "}
+          Everything in one <span className="text-4xl text-pui-theme"> fuck#$%</span>{" "}
           place
         </h1>
 
