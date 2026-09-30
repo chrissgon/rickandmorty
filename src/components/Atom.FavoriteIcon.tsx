@@ -64,7 +64,7 @@ export default function AtomFavoriteIcon(props: FavoriteIconElement) {
       onClick={favorite}
       className={`${props.className} ${
         favorited ? "bi-heart-fill" : "bi-heart"
-      } text-error text-2xl cursor-pointer`}
+      } text-pui-error text-2xl cursor-pointer`}
     ></i>
   );
 }

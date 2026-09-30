@@ -9,8 +9,8 @@ interface EpisodeCardElement extends HTMLAttributes<HTMLDivElement> {
 
 export default function OrginanismEpisodeCard(props: EpisodeCardElement) {
   return (
-    <div className={`card relative h-fit ${props.className}`}>
-      <article className="card-content">
+    <div className={`pui-card relative h-fit ${props.className}`}>
+      <article className="pui-card-content">
         {/* header */}
         <header className="flex gap-4 justify-between items-center">
           <i className="bi bi-collection-play text-lg"></i>
@@ -25,7 +25,7 @@ export default function OrginanismEpisodeCard(props: EpisodeCardElement) {
 
         <Link
           to={`/episode/${props.episode.id}`}
-          className="btn btn-white w-full block mt-2 text-center"
+          className="pui-btn pui-solid pui-surface w-full block mt-2 text-center"
         >
           View details
         </Link>

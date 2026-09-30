@@ -10,8 +10,8 @@ interface CharacterCardElement extends HTMLAttributes<HTMLDivElement> {
 
 export default function OrganismCharacterCard(props: CharacterCardElement) {
   return (
-    <div className={`card relative h-fit ${props.className}`}>
-      <article className="flex flex-col gap-2 card-content">
+    <div className={`pui-card relative h-fit ${props.className}`}>
+      <article className="flex flex-col gap-2 pui-card-content">
         {/* image */}
         <div className="flex rounded-md justify-center items-center h-36 overflow-hidden">
           <img
@@ -47,7 +47,7 @@ export default function OrganismCharacterCard(props: CharacterCardElement) {
 
         <Link
           to={`/character/${props.character.id}`}
-          className="btn btn-white w-full block mt-2 text-center"
+          className="pui-btn pui-solid pui-surface w-full block mt-2 text-center"
         >
           View details
         </Link>

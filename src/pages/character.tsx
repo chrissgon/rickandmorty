@@ -75,20 +75,20 @@ export default function CharacterPage() {
 
               <aside className="w-full inline-flex flex-wrap gap-2 z-10">
                 <span
-                  className={`badge ${
+                  className={`pui-badge pui-outline ${
                     character.status === "Alive"
-                      ? "badge-outline-success"
-                      : "badge-outline-error"
+                      ? "pui-success"
+                      : "pui-error"
                   }`}
                 >
                   <i className="bi-activity mr-2"></i>
                   {character.status}
                 </span>
-                <span className="badge badge-white">
+                <span className="pui-badge pui-solid pui-surface">
                   <i className="bi-person mr-2"></i>
                   {character.species}
                 </span>
-                <span className="badge badge-white">
+                <span className="pui-badge pui-solid pui-surface">
                   <i className="bi-gender-ambiguous mr-2"></i>
                   {character.gender}
                 </span>

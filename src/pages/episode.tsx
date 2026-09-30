@@ -32,17 +32,17 @@ export default function EpisodePage() {
             </h1>
 
             <aside className="flex gap-2 flex-wrap">
-              <span className="badge badge-white inline-flex items-center gap-2">
+              <span className="pui-badge pui-solid pui-surface inline-flex items-center gap-2">
                 <i className="bi-calendar-event"></i>
                 {episode.releasedAt}
               </span>
-              <span className="badge badge-white inline-flex items-center gap-2">
+              <span className="pui-badge pui-solid pui-surface inline-flex items-center gap-2">
                 <i className="bi-play-btn"></i>
                 {episode.episode}
               </span>
             </aside>
 
-            <footer className="flex text-base items-center mt-8 badge badge-outline-warn">
+            <footer className="flex text-base items-center mt-8 pui-badge pui-outline pui-warn">
               <i className="bi-info-circle-fill text-base mr-3"></i>
               <span>
                 <b className="font-bold">{episode.characters.length}</b>{" "}

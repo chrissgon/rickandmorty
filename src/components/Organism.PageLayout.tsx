@@ -12,7 +12,7 @@ export default function OrganismPageLayout(props: PropsWithChildren) {
         <header className="w-full flex flex-col gap-10 z-10">
           {/* button */}
           <div className="flex justify-between gap-10">
-            <Link to="/" className="btn btn-white w-fit">
+            <Link to="/" className="pui-btn pui-solid pui-surface w-fit">
               <i className="bi-chevron-left mr-2"></i>
               Back
             </Link>
@@ -34,7 +34,7 @@ export default function OrganismPageLayout(props: PropsWithChildren) {
 
         <a
           href="#body"
-          className="bi-chevron-up btn btn-white opacity-80 !py-3 rounded-full fixed bottom-10 right-10 z-20"
+          className="bi-chevron-up pui-btn pui-solid pui-surface opacity-80 !py-3 pui-rounded-full fixed bottom-10 right-10 z-20"
         ></a>
       </section>
     </>

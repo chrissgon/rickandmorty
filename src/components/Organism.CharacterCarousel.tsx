@@ -12,7 +12,7 @@ export default function OrganismCharacterCarousel(props: {
           <i className="bi-search text-base mr-2"></i>
           Characters
         </a>
-        <Link to="/characters" className="btn btn-white">
+        <Link to="/characters" className="pui-btn pui-solid pui-surface">
           See all <i className="bi-chevron-right"></i>
         </Link>
       </header>

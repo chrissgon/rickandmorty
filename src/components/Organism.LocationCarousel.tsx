@@ -11,7 +11,7 @@ export default function OrganismLocationCarousel(props:{locations:ILocations}) {
           <i className="bi-search text-base mr-2"></i>
           Locations
         </a>
-        <Link to="/locations" className="btn btn-white">
+        <Link to="/locations" className="pui-btn pui-solid pui-surface">
           See all <i className="bi-chevron-right"></i>
         </Link>
       </header>

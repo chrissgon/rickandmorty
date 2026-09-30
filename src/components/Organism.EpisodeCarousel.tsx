@@ -12,7 +12,7 @@ export default function OrganismEpisodeCarousel(props: {
           <i className="bi-search text-base mr-2"></i>
           Episodes
         </a>
-        <Link to="/episodes" className="btn btn-white">
+        <Link to="/episodes" className="pui-btn pui-solid pui-surface">
           See all <i className="bi-chevron-right"></i>
         </Link>
       </header>
