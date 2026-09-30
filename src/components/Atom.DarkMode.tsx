@@ -1,13 +1,14 @@
-import { setMode } from "@chrissgon/perfectui";
+import { getMode, setMode } from "@chrissgon/perfectui/mode";
 import { useState } from "react";
 
 export default function AtomDarkMode() {
-  const [isDark, setIsDark] = useState(true);
+  // No stored choice ("system") means the first visit's default: dark.
+  const [isDark, setIsDark] = useState(() => getMode() !== "light");
 
   function changeTheme() {
-    setIsDark((darkmode) => (darkmode = !darkmode));
-
-    setMode(isDark ? "light" : "dark");
+    const nextIsDark = !isDark;
+    setIsDark(nextIsDark);
+    setMode(nextIsDark ? "dark" : "light");
   }
 
   return (

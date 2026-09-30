@@ -61,28 +61,27 @@ export default function MoleculeFilterSearch() {
 
   return (
     <div className="w-full flex flex-col gap-3 md:max-w-[500px]">
-      <label
-        className={`field-group group group-row ${
-          notFound && "field-group-error"
-        }`}
-        // @ts-expect-error Custom props
-        message={notFound ? "No results found" : ""}
-      >
-        <select onChange={changeType} className="input group-item max-w-fit">
-          <MoleculeFilterSearch.OptionsTypes />
-        </select>
+      <label className="pui-field-group">
+        <div className="pui-group-row">
+          <select onChange={changeType} className="pui-input max-w-fit">
+            <MoleculeFilterSearch.OptionsTypes />
+          </select>
 
-        <input
-          ref={inputRef}
-          onBlur={resetLists}
-          type="search"
-          className="input group-item w-1"
-          placeholder="Rick Sanchez"
-        />
+          <input
+            ref={inputRef}
+            onBlur={resetLists}
+            type="search"
+            aria-invalid={notFound || undefined}
+            aria-describedby={notFound ? "filter-search-message" : undefined}
+            className="pui-input w-1 flex-1"
+            placeholder="Rick Sanchez"
+          />
+        </div>
+        {notFound && <small id="filter-search-message">No results found</small>}
       </label>
       <button
         onClick={filterByType}
-        className="btn btn-solid-primary group-item"
+        className="pui-btn pui-solid pui-theme"
       >
         Search
       </button>

@@ -21,7 +21,7 @@ export default function TemplateHomeSection() {
 
         <div className="flex items-center gap-5">
           <AtomFavoriteButton className="max-md:hidden" />
-          <hr className="max-md:!hidden vertical !h-[30px]" />
+          <hr className="max-md:!hidden h-[30px] w-0 border-0 border-l border-pui-border" />
           <AtomDarkMode />
           <AtomGithubLink />
           <AtomFigmaLink />
@@ -29,11 +29,11 @@ export default function TemplateHomeSection() {
       </header>
       <article className="w-full md:w-1/2 flex flex-col justify-center gap-8 my-12">
         <h1 className="text-4xl font-bold">
-          Everthing in one <span className="text-4xl text-theme"> fuck#$%</span>{" "}
+          Everthing in one <span className="text-4xl text-pui-theme"> fuck#$%</span>{" "}
           place
         </h1>
 
-        <p className="text-base text-secondary">
+        <p className="text-base text-pui-muted">
           Details about the fuck#$% characters, episodes and even planets.
         </p>
 

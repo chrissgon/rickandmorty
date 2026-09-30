@@ -10,8 +10,8 @@ interface LocationCardElement extends HTMLAttributes<HTMLDivElement> {
 
 export default function OrganismLocationCard(props: LocationCardElement) {
   return (
-    <div className={`card relative !overflow-visible h-fit ${props.className}`}>
-      <article className="w-full card-content">
+    <div className={`pui-card relative !overflow-visible h-fit ${props.className}`}>
+      <article className="w-full pui-card-content">
         {/* header */}
         <header className="flex gap-4 justify-between items-center">
           <AtomIconPlanet className="w-6" />
@@ -27,7 +27,7 @@ export default function OrganismLocationCard(props: LocationCardElement) {
 
         <Link
           to={`/location/${props.location.id}`}
-          className="btn btn-white w-full block mt-2 text-center"
+          className="pui-btn pui-solid pui-surface w-full block mt-2 text-center"
         >
           View details
         </Link>

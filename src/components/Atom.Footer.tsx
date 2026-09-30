@@ -10,7 +10,7 @@ export default function AtomFooter() {
           height="16"
           className="logo"
         />
-        <p className="text-secondary">
+        <p className="text-pui-muted">
           © {new Date().getFullYear()} - Rick and Morty
         </p>
       </footer>

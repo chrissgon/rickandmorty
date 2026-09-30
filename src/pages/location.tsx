@@ -35,17 +35,17 @@ export default function LocationPage() {
             </h1>
 
             <aside className="flex gap-2 flex-wrap">
-              <span className="badge badge-outline-primary inline-flex items-center gap-2">
+              <span className="pui-badge pui-outline pui-theme inline-flex items-center gap-2">
                 <i className="bi bi-box"></i>
                 {location.dimension}
               </span>
-              <span className="badge badge-white inline-flex items-center gap-2">
+              <span className="pui-badge pui-solid pui-surface inline-flex items-center gap-2">
                 <AtomIconPlanet className="w-4 h-[22px]" />
                 {location.type}
               </span>
             </aside>
 
-            <footer className="flex text-base items-center mt-8 badge badge-outline-warn">
+            <footer className="flex text-base items-center mt-8 pui-badge pui-outline pui-warn">
               <i className="bi-info-circle-fill text-base mr-3"></i>
               <span>
                 <b className="font-bold">{location.residents.length}</b>{" "}
