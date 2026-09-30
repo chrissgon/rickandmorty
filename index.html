@@ -5,6 +5,16 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
     <title>Rick And Morty - The Definitive Guide</title>
+    <!--
+      Dark is the default for a first visit (the attribute above). A stored
+      choice, from the pui-mode cookie Perfect UI's setMode writes, is applied
+      here, before the stylesheet, so the page never paints in the other mode.
+    -->
+    <script>
+      (function (m) {
+        if (m) document.documentElement.setAttribute("data-pui-mode", m[1]);
+      })(document.cookie.match(/(?:^|; )pui-mode=(light|dark)/));
+    </script>
   </head>
   <body id="body">
     <div id="root"></div>
